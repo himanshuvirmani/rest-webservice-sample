@@ -1,0 +1,34 @@
+spring:
+    profiles:
+        active: test
+    datasource:
+        dataSourceClassName: org.h2.jdbcx.JdbcDataSource
+        url: jdbc:h2:mem:sampleGradle;DB_CLOSE_DELAY=-1
+        databaseName:
+        serverName:
+        username:
+        password:
+
+    jpa:
+        database-platform: FixedH2Dialect
+        database: H2
+        openInView: false
+        show_sql: true
+        generate-ddl: false
+        hibernate:
+            ddl-auto: none
+            naming-strategy: org.springframework.boot.orm.jpa.hibernate.SpringNamingStrategy
+        properties:
+            hibernate.cache.use_second_level_cache: false
+            hibernate.cache.use_query_cache: false
+            hibernate.generate_statistics: true
+            hibernate.hbm2ddl.auto: create
+
+http:
+    cache:
+        timeToLiveInDays: 31
+
+cache:
+    timeToLiveSeconds: 3600
+    ehcache:
+        maxBytesLocalHeap: 256M
