@@ -28,6 +28,10 @@ public class JacksonConfiguration {
     @Primary
     @Bean
     public ObjectMapper jacksonObjectMapper() {
-        return new ObjectMapper();
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(jacksonJodaModule());
+        objectMapper.configure(com.fasterxml.jackson.databind.SerializationFeature.
+                WRITE_DATES_AS_TIMESTAMPS , false);
+        return objectMapper;
     }
 }

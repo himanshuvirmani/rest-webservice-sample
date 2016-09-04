@@ -17,9 +17,10 @@
 package com.sample.repository;
 
 import com.sample.domain.Category;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.Repository;
 
-public interface CategoryRepository extends Repository<Category, Long> {
+public interface CategoryRepository extends CrudRepository<Category, Long> {
 
 
 }

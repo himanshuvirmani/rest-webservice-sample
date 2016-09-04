@@ -12,9 +12,9 @@ public class RestErrorHandler {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RestErrorHandler.class);
 
-    @ExceptionHandler(AggregateNotFoundException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public void handleTodoNotFoundException(AggregateNotFoundException ex) {
+    @ExceptionHandler(CategoryNotFoundException.class)
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "Category not found")
+    public void handleTodoNotFoundException(CategoryNotFoundException ex) {
         LOGGER.debug(ex.getMessage());
     }
 }

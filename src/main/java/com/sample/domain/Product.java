@@ -27,7 +27,8 @@ public class Product extends BaseEntity{
     private Double quantity;
 
     @Column(name = "quantity_unit")
-    private String quantity_unit;
+    @JsonProperty(value = "quantity_unit")
+    private String quantityUnit;
 
     @Column(name = "is_active")
     @JsonProperty(value = "is_active")

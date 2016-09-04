@@ -17,9 +17,10 @@
 package com.sample.repository;
 
 import com.sample.domain.Product;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.Repository;
 
-public interface ProductRepository extends Repository<Product, Long> {
+public interface ProductRepository extends CrudRepository<Product, Long> {
 
 
 }
