@@ -71,7 +71,7 @@ public class CategoryServiceImpl implements CategoryService {
             Category parent = categoryRepository.findOne(categoryDto.getParentId());
             if (parent == null)
                 throw new CategoryNotFoundException("Parent Category with id " + categoryDto.getParentId() + "not found");
-            category.setParent(categoryRepository.findOne(categoryDto.getParentId()));
+            category.setParent(parent);
         }
         return categoryRepository.save(category);
     }

@@ -14,7 +14,13 @@ public class RestErrorHandler {
 
     @ExceptionHandler(CategoryNotFoundException.class)
     @ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "Category not found")
-    public void handleTodoNotFoundException(CategoryNotFoundException ex) {
+    public void handleCategoryNotFoundException(CategoryNotFoundException ex) {
+        LOGGER.debug(ex.getMessage());
+    }
+
+    @ExceptionHandler(ProductNotFoundException.class)
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "Product not found")
+    public void handleCategoryNotFoundException(ProductNotFoundException ex) {
         LOGGER.debug(ex.getMessage());
     }
 }

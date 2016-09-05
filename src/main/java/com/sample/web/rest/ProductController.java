@@ -42,6 +42,7 @@ public class ProductController extends BaseController {
     }
 
     // This can be paginated. Will do if I get time.
+    // Ideally this api does not make sense. You should have search product api instead of giving all products
     @RequestMapping(value = "/", method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
