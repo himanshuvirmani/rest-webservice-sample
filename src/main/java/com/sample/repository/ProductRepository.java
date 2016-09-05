@@ -18,9 +18,17 @@ package com.sample.repository;
 
 import com.sample.domain.Product;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.Repository;
+import org.springframework.security.access.prepost.PreAuthorize;
 
+@PreAuthorize("hasRole('ROLE_USER')")
 public interface ProductRepository extends CrudRepository<Product, Long> {
 
+    @Override
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    <S extends Product> Iterable<S> save(Iterable<S> entities);
+
+    @Override
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    <S extends Product> S save(S s);
 
 }

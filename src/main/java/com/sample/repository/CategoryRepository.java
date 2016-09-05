@@ -17,10 +17,19 @@
 package com.sample.repository;
 
 import com.sample.domain.Category;
+import com.sample.domain.Product;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.Repository;
+import org.springframework.security.access.prepost.PreAuthorize;
 
+@PreAuthorize("hasRole('ROLE_USER')")
 public interface CategoryRepository extends CrudRepository<Category, Long> {
 
+    @Override
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    <S extends Category> Iterable<S> save(Iterable<S> entities);
 
+    @Override
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    <S extends Category> S save(S s);
 }
