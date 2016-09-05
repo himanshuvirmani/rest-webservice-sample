@@ -17,14 +17,9 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
-/**
- * Created by neerajsi on 16/09/15.
- */
 
 
 /**
