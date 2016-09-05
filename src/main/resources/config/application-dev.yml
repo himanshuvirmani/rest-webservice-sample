@@ -28,6 +28,9 @@ spring:
                     hibernate.generate_statistics: true
                     org.hibernate.envers.audit_table_suffix: _history
 
+envConfig:
+    fixerServiceUrl: http://api.fixer.io/latest
+
 http:
     cache:
         timeToLiveInDays: 31

@@ -109,6 +109,7 @@ dependencies {
   compile group: 'org.jadira.usertype', name: 'usertype.core', version: usertype_core_version
 
   compile group: 'org.projectlombok', name: 'lombok', version: lombok_version
+//  compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.2'
 
   compile(group: 'io.springfox', name: 'springfox-swagger2', version: springfox_version) {
     exclude module: 'mapstruct'

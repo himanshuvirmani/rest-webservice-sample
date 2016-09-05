@@ -36,4 +36,5 @@ public class ProductRequestDto {
     @JsonProperty(value = "category_id")
     private Long categoryId;
 
+    private String currency;
 }
