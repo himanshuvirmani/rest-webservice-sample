@@ -20,7 +20,13 @@ public class RestErrorHandler {
 
     @ExceptionHandler(ProductNotFoundException.class)
     @ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "Product not found")
-    public void handleCategoryNotFoundException(ProductNotFoundException ex) {
+    public void handleProductNotFoundException(ProductNotFoundException ex) {
+        LOGGER.debug(ex.getMessage());
+    }
+
+    @ExceptionHandler(CurrencyNotFoundException.class)
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "Currency not found")
+    public void handleCurrencyNotFoundException(CurrencyNotFoundException ex) {
         LOGGER.debug(ex.getMessage());
     }
 }
