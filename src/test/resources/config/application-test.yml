@@ -10,7 +10,7 @@ spring:
         password:
 
     jpa:
-        database-platform: FixedH2Dialect
+        database-platform: com.sample.domain.util.FixedH2Dialect
         database: H2
         openInView: false
         show_sql: true

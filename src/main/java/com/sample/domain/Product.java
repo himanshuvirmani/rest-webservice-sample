@@ -34,7 +34,7 @@ public class Product extends BaseEntity{
     @JsonProperty(value = "is_active")
     private Boolean isActive;
 
-    @Column(name = "ean_code")
+    @Column(name = "ean_code", unique = true)
     private String eanCode;
 
     @Column(name = "price")

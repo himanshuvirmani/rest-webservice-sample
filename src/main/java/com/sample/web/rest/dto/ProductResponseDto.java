@@ -2,7 +2,9 @@ package com.sample.web.rest.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sample.domain.Product;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
@@ -10,6 +12,8 @@ import java.math.BigDecimal;
  * Created by himanshu.virmani on 04/09/16.
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ProductResponseDto {
 
     private Long id;
