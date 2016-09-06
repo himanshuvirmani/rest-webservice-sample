@@ -16,6 +16,7 @@
 
 package com.sample.web.rest;
 
+import com.sample.config.dbutils.ReadOnlyConnection;
 import com.sample.domain.Category;
 import com.sample.service.CategoryService;
 import com.sample.web.rest.dto.CategoryDto;
@@ -53,6 +54,7 @@ public class CategoryController extends BaseController {
     @RequestMapping(value = "/{category_id}", method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
+    @ReadOnlyConnection
     @Transactional(readOnly = true)
     public Category getById(@PathVariable("category_id") Long categoryId) {
         return this.categoryService.getCategoryById(categoryId);
