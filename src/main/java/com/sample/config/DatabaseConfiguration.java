@@ -4,6 +4,7 @@ import com.sample.common.AuditingDateTimeProvider;
 import com.sample.common.DateTimeService;
 import com.fasterxml.jackson.datatype.hibernate4.Hibernate4Module;
 import com.sample.config.dbutils.DbType;
+import com.sample.config.dbutils.RoutingDataSource;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.slf4j.Logger;
@@ -43,7 +44,7 @@ public class DatabaseConfiguration implements EnvironmentAware {
     public void setEnvironment(Environment env) {
         this.env = env;
         this.dataSourcePropertyResolver = new RelaxedPropertyResolver(env, "spring.datasource.");
-        this.slaveDataSourcePropertyResolver = new RelaxedPropertyResolver(env, "spring.slavedatasource.");
+        this.slaveDataSourcePropertyResolver = new RelaxedPropertyResolver(env, "spring.slave-datasource.");
     }
 
     @Bean
@@ -88,11 +89,11 @@ public class DatabaseConfiguration implements EnvironmentAware {
         log.debug("Configuring Slave Datasource");
         if (slaveDataSourcePropertyResolver.getProperty("url") == null
                 && slaveDataSourcePropertyResolver.getProperty("databaseName") == null) {
-            log.error("Your database connection pool configuration is incorrect! The application" +
-                            " cannot start. Please check your Spring profile, current profiles are: {}",
+            log.warn("Your database connection pool configuration for slave is not present/incorrect! The application" +
+                            " will use master datasource only. Please check your Spring profile, current profiles are: {}",
                     Arrays.toString(env.getActiveProfiles()));
 
-            throw new ApplicationContextException("Database connection pool is not configured correctly");
+            return masterDataSource();
         }
         HikariConfig config = new HikariConfig();
         config.setDataSourceClassName(slaveDataSourcePropertyResolver.getProperty("dataSourceClassName"));

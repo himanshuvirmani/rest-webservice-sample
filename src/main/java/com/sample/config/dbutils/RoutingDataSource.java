@@ -1,6 +1,5 @@
-package com.sample.config;
+package com.sample.config.dbutils;
 
-import com.sample.config.dbutils.DbContextHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 
