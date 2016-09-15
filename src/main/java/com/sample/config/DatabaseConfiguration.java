@@ -47,7 +47,7 @@ public class DatabaseConfiguration implements EnvironmentAware {
         this.slaveDataSourcePropertyResolver = new RelaxedPropertyResolver(env, "spring.slave-datasource.");
     }
 
-    @Bean
+    @Bean(destroyMethod = "close")
     public DataSource masterDataSource() {
         log.debug("Configuring Master Datasource");
         if (dataSourcePropertyResolver.getProperty("url") == null
@@ -84,7 +84,7 @@ public class DatabaseConfiguration implements EnvironmentAware {
         return new HikariDataSource(config);
     }
 
-    @Bean
+    @Bean(destroyMethod = "close")
     public DataSource slaveDataSource() {
         log.debug("Configuring Slave Datasource");
         if (slaveDataSourcePropertyResolver.getProperty("url") == null
